@@ -3,7 +3,7 @@ import apiKeys from '../apiKeys.json';
 
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
-const getFarmer = () => new Promise((resolve, reject) => {
+const getFarmers = () => new Promise((resolve, reject) => {
   axios.get(`${baseUrl}/farmers.json`)
     .then((response) => {
       const demFarmers = response.data;
@@ -17,7 +17,9 @@ const getFarmer = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
+const getFarmerById = (farmerId) => axios.get(`${baseUrl}/farmers/${farmerId}.json`);
 
 export default {
-  getFarmer,
+  getFarmers,
+  getFarmerById,
 };
